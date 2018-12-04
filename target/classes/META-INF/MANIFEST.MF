@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: gildard
+Build-Jdk: 10.0.2
+Implementation-Title: bolsa
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.bolsa
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/bolsa
+Created-By: Maven Integration for Eclipse
+
