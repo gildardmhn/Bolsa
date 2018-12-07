@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bolsa.model.Monitoramento;
 import com.bolsa.service.impl.MonitoramentoServiceImpl;
 import com.bolsa.views.ContaView.MonitoramentoView;
-import com.bolsa.views.ContaView.TodosOsContatos;
+import com.bolsa.views.ContaView.Contato;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
@@ -27,7 +27,7 @@ public class MonitoramentoController {
 	@Autowired
 	private MonitoramentoServiceImpl monitoramentoServiceImpl;
 
-	@JsonView(TodosOsContatos.class)
+	@JsonView(Contato.class)
 	@PostMapping("{id}")
 	public ResponseEntity<Monitoramento> salvarMonitoramentp(@PathVariable("id") Long id,
 			@RequestBody Monitoramento monitoramento) {
@@ -52,7 +52,7 @@ public class MonitoramentoController {
 	}*/
 
 	@PutMapping("{id}")
-	@JsonView(TodosOsContatos.class)
+	@JsonView(Contato.class)
 	public ResponseEntity<Monitoramento> atualizarMonitoramento(@PathVariable("id") Long id,
 			@RequestBody Monitoramento monitoramento) {
 		monitoramentoServiceImpl.salvarMonitoramento(id, monitoramento);

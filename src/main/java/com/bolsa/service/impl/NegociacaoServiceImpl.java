@@ -25,6 +25,8 @@ public class NegociacaoServiceImpl implements NegociacaoService {
 	private EmpresaServiceImpl empresaServiceImpl;
 	@Autowired
 	private MonitoramentoServiceImpl monitoramentoServiceImpl;
+	@Autowired
+	private EmailServiceImpl emailserviceImpl;
 
 	@Override
 	public Negociacao salvarNegociacao(Long id, Negociacao negociacao) {
@@ -54,6 +56,7 @@ public class NegociacaoServiceImpl implements NegociacaoService {
 		conta.setSaldo(0);
 		conta.setNumeroAcoes(acoes);
 		contaServiceImpl.salvarConta(conta);
+		emailserviceImpl.sendEmail(negociacao, monitoramento, empresa);
 		return salvarNegociacao(conta.getId(), negociacao);
 	}
 

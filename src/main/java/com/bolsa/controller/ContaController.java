@@ -1,5 +1,7 @@
 package com.bolsa.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bolsa.model.Conta;
 import com.bolsa.service.impl.ContaServiceImpl;
-import com.bolsa.views.ContaView.TodosOsContatos;
+import com.bolsa.views.ContaView.Contato;
+import com.bolsa.views.ContaView.TodasAsContas;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @RestController
@@ -28,10 +31,17 @@ public class ContaController {
 		return new ResponseEntity<>(conta, HttpStatus.CREATED);
 	}
 
-	@JsonView(TodosOsContatos.class)
+	@JsonView(Contato.class)
 	@GetMapping("{id}")
 	public ResponseEntity<Conta> listaContaPeloId(@PathVariable("id") Conta conta) {
 		return new ResponseEntity<Conta>(conta, HttpStatus.OK);
+	}
+	
+	@JsonView(TodasAsContas.class)
+	@GetMapping
+	public ResponseEntity<List<Conta>> listaContas(){
+		List<Conta> contas = contaServiceImpl.listaContas();
+		return new ResponseEntity<>(contas, HttpStatus.OK);
 	}
 
 }

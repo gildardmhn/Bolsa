@@ -13,7 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import com.bolsa.model.enums.Transacao;
-import com.bolsa.views.ContaView.TodosOsContatos;
+import com.bolsa.views.ContaView.Contato;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -36,7 +36,7 @@ public class Negociacao {
 	@JoinColumn(nullable = false)
 	private Conta conta;
 
-	@JsonView(TodosOsContatos.class)
+	@JsonView(Contato.class)
 	public Long getId() {
 		return id;
 	}
@@ -45,7 +45,7 @@ public class Negociacao {
 		this.id = id;
 	}
 
-	@JsonView(TodosOsContatos.class)
+	@JsonView(Contato.class)
 	public Transacao getTipoTransacao() {
 		return tipoTransacao;
 	}
@@ -54,7 +54,7 @@ public class Negociacao {
 		this.tipoTransacao = tipoTransacao;
 	}
 
-	@JsonView(TodosOsContatos.class)
+	@JsonView(Contato.class)
 	public String getEmpresa() {
 		return empresa;
 	}
@@ -63,7 +63,7 @@ public class Negociacao {
 		this.empresa = empresa;
 	}
 
-	@JsonView(TodosOsContatos.class)
+	@JsonView(Contato.class)
 	public float getValor() {
 		return valor;
 	}
@@ -72,7 +72,7 @@ public class Negociacao {
 		this.valor = valor;
 	}
 
-	@JsonView(TodosOsContatos.class)
+	@JsonView(Contato.class)
 	public float getQuantidadeAcoes() {
 		return quantidadeAcoes;
 	}
@@ -81,7 +81,7 @@ public class Negociacao {
 		this.quantidadeAcoes = quantidade;
 	}
 
-	@JsonView(TodosOsContatos.class)
+	@JsonView(Contato.class)
 	public Date getData() {
 		return data;
 	}
