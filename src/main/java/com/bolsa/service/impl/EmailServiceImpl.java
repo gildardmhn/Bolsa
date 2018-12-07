@@ -31,13 +31,13 @@ public class EmailServiceImpl implements EmailService {
 	public SimpleMailMessage constructReportMail(Negociacao negociacao, Monitoramento monitoramento, Empresa empresa) {
 		String assunto;
 		String mensagem;
-		if (negociacao.getTipoTransacao().equals(Transacao.VENDA)) {
+		if (negociacao.getTipoTransacao() == Transacao.VENDA) {
 			assunto = "Venda de ações do(a) " + negociacao.getEmpresa();
-			mensagem = "Preço de venda: " + monitoramento.getPrecoVenda() + "/n Valor negociado: "
+			mensagem = "Preço de venda: " + monitoramento.getPrecoVenda() + ". Valor negociado: "
 					+ empresa.getValorAcao();
 		} else {
 			assunto = "Compra de ações do(a) " + negociacao.getEmpresa();
-			mensagem = "Preço de compra: " + monitoramento.getPrecoCompra() + "/n Valor negociado: "
+			mensagem = "Preço de compra: " + monitoramento.getPrecoCompra() + ". Valor negociado: "
 					+ empresa.getValorAcao();
 		}
 		return constructMail(assunto, mensagem, negociacao);

@@ -55,9 +55,11 @@ public class NegociacaoServiceImpl implements NegociacaoService {
 		negociacao.setValor(empresa.getValorAcao());
 		conta.setSaldo(0);
 		conta.setNumeroAcoes(acoes);
+		Negociacao neg = salvarNegociacao(conta.getId(), negociacao);
 		contaServiceImpl.salvarConta(conta);
-		emailserviceImpl.sendEmail(negociacao, monitoramento, empresa);
-		return salvarNegociacao(conta.getId(), negociacao);
+		
+		emailserviceImpl.sendEmail(neg, monitoramento, empresa);
+		return neg;
 	}
 
 	@Override
