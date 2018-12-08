@@ -94,9 +94,3 @@ requisição **GET** para **/app/bolsa/historico/{id}** onde **id** é o id refe
 
 * Lembrando que a documentação completa dos endpoints está disponível nesse [link.](http://localhost:9000/swagger-ui.html)
 
-# Arquitetura
-Essa aplicação é uma API. Para explicar de maneira simples, vamos imaginar o cenário de um restaurante. No restaurante quando você faz o seus pedido ao garçom, ele leva ao cozinheiro que prepara a comida. Quando estiver pronta, o cozinheiro chama o garçom que vai levar o seu prato para você comer. É a mesma coisa que acontece quando falamos de API. Nesse caso a API é o garçom, o cozinheiro é o banco de dados e você é o cliente. Você faz uma requisição para a API que trata ela, e manda para o banco de dados. O banco de dados retorna os dados pedidos à API e ela manda os dados para você. Nesse projet implementamos o Backend de uma API.
-
-Como essa aplicação é somente o Backend, ela não renderisa os dados em página html.
-
-A aplicação tem vários endpoint que estão bem detalhados com o Swagger. A documentação está disponível [aqui.](http://localhost:9000/swagger-ui.html) (A aplicação deve estar rodando quando clicar nesse link).
