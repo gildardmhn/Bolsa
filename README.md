@@ -92,4 +92,15 @@ requisição **GET** para **/app/bolsa/historico/{id}** onde **id** é o id refe
 # Arquitetura
 
 A aplicação segue o padrão MVC (Model View Controller)
+## Model
+Sempre que você pensar em manipulação de dados, pense em model. Ele é responsável pela leitura e escrita de dados, e também de suas validações.
+
+## View
+Simples: a camada de interação com o usuário. Ela apenas faz a  exibição dos dados, sendo ela por meio de um html ou xml.
+
+## Controller
+O responsável por receber todas as requisições do usuário. Seus métodos chamados actions são responsáveis por uma página, controlando qual model usar e qual view será mostrado ao usuário.
+
+Como essa aplicação é somente o Backend, ela não renderisa os dados em página html.
+
 A aplicação tem vários endpoint que estão bem detalhados com o Swagger. A documentação está disponível [aqui.](http://localhost:9000/swagger-ui.html) (A aplicação deve estar rodando quando clicar nesse link).
