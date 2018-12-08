@@ -92,4 +92,4 @@ requisição **GET** para **/app/bolsa/historico/{id}** onde **id** é o id refe
 # Arquitetura
 
 A aplicação segue o padrão MVC (Model View Controller)
-A aplicação tem vários endpoint que estão bem detalhados com o Swagger. A documentação está disponível na [documentação](http://localhost:9000/swagger-ui.html)(A aplicação deve estar rodando quando clicar nesse link).
+A aplicação tem vários endpoint que estão bem detalhados com o Swagger. A documentação está disponível [aqui.](http://localhost:9000/swagger-ui.html) (A aplicação deve estar rodando quando clicar nesse link).
