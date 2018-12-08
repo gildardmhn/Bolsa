@@ -1,6 +1,6 @@
 package com.bolsa.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +30,7 @@ public class Negociacao {
 	private String empresa;
 	private float valor;
 	private float quantidadeAcoes;
-	private Date data;
+	private LocalDateTime data;
 
 	@ManyToOne
 	@JoinColumn(nullable = false)
@@ -82,11 +82,11 @@ public class Negociacao {
 	}
 
 	@JsonView(Contato.class)
-	public Date getData() {
+	public LocalDateTime getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(LocalDateTime data) {
 		this.data = data;
 	}
 

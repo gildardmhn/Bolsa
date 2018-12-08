@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.bolsa.views.ContaView.MonitoramentoView;
 import com.bolsa.views.ContaView.Contato;
+import com.bolsa.views.ContaView.MonitoramentoView;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity

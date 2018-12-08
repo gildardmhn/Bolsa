@@ -3,6 +3,8 @@ package com.bolsa.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import com.google.common.base.Predicates;
+
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -18,8 +20,12 @@ public class SwaggerConfig {
 	public Docket detalheApi() {
 
 		Docket docket = new Docket(DocumentationType.SWAGGER_2);
-		docket.select().apis(RequestHandlerSelectors.basePackage("")).paths(PathSelectors.any()).build()
-				.apiInfo(this.informacoesApi().build());
+		docket.select()
+		.apis(RequestHandlerSelectors.basePackage(""))
+		.paths(PathSelectors.any())
+		.paths(Predicates.not(PathSelectors.regex("/error.*")))
+		.build()
+		.apiInfo(this.informacoesApi().build());
 
 		return docket;
 	}
@@ -29,7 +35,7 @@ public class SwaggerConfig {
 		ApiInfoBuilder apiInfoBuilder = new ApiInfoBuilder();
 
 		apiInfoBuilder.title("API - Bolsa de valores");
-		apiInfoBuilder.description("API que simula a compra e a venda de ações na bolsa de valores");
+		apiInfoBuilder.description("API que simula a compra e a venda de ações da bolsa de valores");
 		apiInfoBuilder.version("1.0");
 
 		return apiInfoBuilder;

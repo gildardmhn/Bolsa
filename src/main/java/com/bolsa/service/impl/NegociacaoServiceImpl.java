@@ -1,6 +1,6 @@
 package com.bolsa.service.impl;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +49,7 @@ public class NegociacaoServiceImpl implements NegociacaoService {
 
 		Negociacao negociacao = new Negociacao();
 		negociacao.setTipoTransacao(Transacao.COMPRA);
-		negociacao.setData(new Date());
+		negociacao.setData(LocalDateTime.now());
 		negociacao.setEmpresa(monitoramento.getEmpresa());
 		negociacao.setQuantidadeAcoes(acoes);
 		negociacao.setValor(empresa.getValorAcao());
@@ -57,7 +57,7 @@ public class NegociacaoServiceImpl implements NegociacaoService {
 		conta.setNumeroAcoes(acoes);
 		Negociacao neg = salvarNegociacao(conta.getId(), negociacao);
 		contaServiceImpl.salvarConta(conta);
-		
+
 		emailserviceImpl.sendEmail(neg, monitoramento, empresa);
 		return neg;
 	}
@@ -70,13 +70,16 @@ public class NegociacaoServiceImpl implements NegociacaoService {
 		Negociacao negociacao = new Negociacao();
 		negociacao.setValor(empresa.getValorAcao());
 		negociacao.setTipoTransacao(Transacao.VENDA);
-		negociacao.setData(new Date());
+		negociacao.setData(LocalDateTime.now());
 		negociacao.setEmpresa(monitoramento.getEmpresa());
 		negociacao.setQuantidadeAcoes(conta.getNumeroAcoes());
 		conta.setSaldo(conta.getNumeroAcoes() * empresa.getValorAcao());
 		conta.setNumeroAcoes(0);
+		Negociacao neg = salvarNegociacao(conta.getId(), negociacao);
 		contaServiceImpl.salvarConta(conta);
-		return salvarNegociacao(conta.getId(), negociacao);
+
+		emailserviceImpl.sendEmail(neg, monitoramento, empresa);
+		return neg;
 	}
 
 	@Override
@@ -94,6 +97,37 @@ public class NegociacaoServiceImpl implements NegociacaoService {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void historicoNegociacoes(Long id) {
+		Conta conta = contaServiceImpl.listaContaPeloId(id);
+		List<Negociacao> negociacoes = conta.getNegociacoes();
+		for (Negociacao negociacao : negociacoes) {
+			System.out.println("------------------------------------------------------------");
+			System.out.println("-------------------------------------------------");
+			System.out.println("-----------------------------------");
+			System.out.println("Identificador: " + negociacao.getId());
+			System.out.println("Transação : " + negociacao.getTipoTransacao());
+			System.out.println("Empresa: " + negociacao.getEmpresa());
+			System.out.println("Valor: " + negociacao.getValor());
+			System.out.println("Quantidade de ações: " + negociacao.getQuantidadeAcoes());
+			System.out.println("Data: " + negociacao.getData());
+			System.out.println("------------------------------------------------------------");
+			System.out.println("-------------------------------------------------");
+			System.out.println("------------------------------------------");
+			System.out.println("-----------------------------------");
+		}
+		System.out.println("------------------------------------------------------------");
+		System.out.println("---                                                      ---");
+		System.out.println("---                                                      ---");
+		System.out.println("---    Saldo Final: " + conta.getSaldo() + "             ---");
+		System.out.println("---    Número de ações: " + conta.getNumeroAcoes() + "   ---");
+		System.out.println("---                                                      ---");
+		System.out.println("---                                                      ---");
+		System.out.println("------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------");
+		System.out.println("------------------------------------------------------------");
 	}
 
 }

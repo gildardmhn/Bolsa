@@ -16,5 +16,7 @@ public interface NegociacaoService {
 	Negociacao venda(Monitoramento monitoramento);
 
 	void compraVendaAcoes(Long id);
+	
+	void historicoNegociacoes(Long id);
 
 }

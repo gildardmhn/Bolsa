@@ -35,4 +35,9 @@ public class ContaServiceImpl implements ContaService {
 		contaRepository.deleteById(id);
 	}
 
+	@Override
+	public float saldoInicial(Long id) {
+		return listaContaPeloId(id).getSaldo();
+	}
+
 }

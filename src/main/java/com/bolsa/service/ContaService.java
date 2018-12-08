@@ -13,4 +13,6 @@ public interface ContaService {
 	List<Conta> listaContas();
 
 	void deleteContaById(Long id);
+	
+	float saldoInicial(Long id);
 }

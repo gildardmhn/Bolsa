@@ -18,6 +18,8 @@ import com.bolsa.views.ContaView.Contato;
 import com.bolsa.views.ContaView.TodasAsContas;
 import com.fasterxml.jackson.annotation.JsonView;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/app/conta")
 public class ContaController {
@@ -25,18 +27,22 @@ public class ContaController {
 	@Autowired
 	private ContaServiceImpl contaServiceImpl;
 
+	@ApiOperation(value = "Criação de uma nova conta", notes = "Este controller"
+			+ " serve para a criação de uma nova conta")
 	@PostMapping
 	public ResponseEntity<Conta> salvarConta(@RequestBody Conta conta) {
 		contaServiceImpl.salvarConta(conta);
 		return new ResponseEntity<>(conta, HttpStatus.CREATED);
 	}
 
+	@ApiOperation(value = "Lista uma conta especifica", notes = "Este controller Faz a listagem de uma conta pelo o seu id")
 	@JsonView(Contato.class)
 	@GetMapping("{id}")
 	public ResponseEntity<Conta> listaContaPeloId(@PathVariable("id") Conta conta) {
 		return new ResponseEntity<Conta>(conta, HttpStatus.OK);
 	}
 	
+	@ApiOperation(value = "Listagem de todas as contas", notes = "Este controller lista todas as contas existantes no sistema")
 	@JsonView(TodasAsContas.class)
 	@GetMapping
 	public ResponseEntity<List<Conta>> listaContas(){

@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bolsa.model.Monitoramento;
 import com.bolsa.service.impl.MonitoramentoServiceImpl;
-import com.bolsa.views.ContaView.MonitoramentoView;
 import com.bolsa.views.ContaView.Contato;
+import com.bolsa.views.ContaView.MonitoramentoView;
 import com.fasterxml.jackson.annotation.JsonView;
+
+import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping("/app/monitoramento")
@@ -27,9 +29,12 @@ public class MonitoramentoController {
 	@Autowired
 	private MonitoramentoServiceImpl monitoramentoServiceImpl;
 
+	@ApiOperation(value = "Criação de um monitoramento para uma conta", notes = "Este controller"
+			+ " serve para criar um monitoramento para uma conta informando o id"
+			+ " da conta e mandando um Json com os dados do monitoramento")
 	@JsonView(Contato.class)
 	@PostMapping("{id}")
-	public ResponseEntity<Monitoramento> salvarMonitoramentp(@PathVariable("id") Long id,
+	public ResponseEntity<Monitoramento> salvarMonitoramento(@PathVariable("id") Long id,
 			@RequestBody Monitoramento monitoramento) {
 
 		Monitoramento monitoramentoSalvo = monitoramentoServiceImpl.salvarMonitoramento(id, monitoramento);
@@ -39,18 +44,16 @@ public class MonitoramentoController {
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
 
+	@ApiOperation(value = "Deletar um monitoramento de uma conta", notes = "Este controller"
+			+ " serve deletar um monitoramento referente a uma conta informando o id do monitoramento")
 	@DeleteMapping("{id}")
 	public ResponseEntity<?> excluirMonitoramento(@PathVariable("id") Long id) {
 		monitoramentoServiceImpl.deletarMonitoramento(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
-	/*@GetMapping("{id}")
-	@JsonView(MonitoramentoView.class)
-	public ResponseEntity<Monitoramento> listaMonitoramentoPeloId(@PathVariable("id") Monitoramento monitoramento) {
-		return new ResponseEntity<>(monitoramento, HttpStatus.OK);
-	}*/
-
+	@ApiOperation(value = "Atualização de um monitoramento de uma conta", notes = "Este controller"
+			+ " serve para atulizar os dados de um monitoramento")
 	@PutMapping("{id}")
 	@JsonView(Contato.class)
 	public ResponseEntity<Monitoramento> atualizarMonitoramento(@PathVariable("id") Long id,
@@ -59,6 +62,8 @@ public class MonitoramentoController {
 		return new ResponseEntity<>(monitoramento, HttpStatus.CREATED);
 	}
 	
+	@ApiOperation(value = "Listagem dos monitoramentos de uma conta", notes = "Este controller"
+			+ " serve para listar todos os monitormentos de uma determinada conta")
 	@GetMapping("/conta/{id}")
 	@JsonView(MonitoramentoView.class)
 	public ResponseEntity<List<Monitoramento>> monitoramentosDaConta(@PathVariable("id") Long id) {
