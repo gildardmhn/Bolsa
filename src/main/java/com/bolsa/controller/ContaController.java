@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bolsa.model.Conta;
 import com.bolsa.service.impl.ContaServiceImpl;
-import com.bolsa.views.ContaView.Contato;
+import com.bolsa.views.ContaView.ViewConta;
 import com.bolsa.views.ContaView.TodasAsContas;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -36,7 +36,7 @@ public class ContaController {
 	}
 
 	@ApiOperation(value = "Lista uma conta especifica", notes = "Este controller Faz a listagem de uma conta pelo o seu id")
-	@JsonView(Contato.class)
+	@JsonView(ViewConta.class)
 	@GetMapping("{id}")
 	public ResponseEntity<Conta> listaContaPeloId(@PathVariable("id") Conta conta) {
 		return new ResponseEntity<Conta>(conta, HttpStatus.OK);

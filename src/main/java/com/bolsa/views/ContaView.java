@@ -2,7 +2,7 @@ package com.bolsa.views;
 
 public class ContaView {
 
-	public interface Contato {}
+	public interface ViewConta {}
 	public interface MonitoramentoView{}
 	public interface TodasAsContas{}
 }

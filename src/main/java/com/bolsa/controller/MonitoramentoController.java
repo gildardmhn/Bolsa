@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.bolsa.model.Monitoramento;
 import com.bolsa.service.impl.MonitoramentoServiceImpl;
-import com.bolsa.views.ContaView.Contato;
+import com.bolsa.views.ContaView.ViewConta;
 import com.bolsa.views.ContaView.MonitoramentoView;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -32,7 +32,7 @@ public class MonitoramentoController {
 	@ApiOperation(value = "Criação de um monitoramento para uma conta", notes = "Este controller"
 			+ " serve para criar um monitoramento para uma conta informando o id"
 			+ " da conta e mandando um Json com os dados do monitoramento")
-	@JsonView(Contato.class)
+	@JsonView(ViewConta.class)
 	@PostMapping("{id}")
 	public ResponseEntity<Monitoramento> salvarMonitoramento(@PathVariable("id") Long id,
 			@RequestBody Monitoramento monitoramento) {
@@ -55,7 +55,7 @@ public class MonitoramentoController {
 	@ApiOperation(value = "Atualização de um monitoramento de uma conta", notes = "Este controller"
 			+ " serve para atulizar os dados de um monitoramento")
 	@PutMapping("{id}")
-	@JsonView(Contato.class)
+	@JsonView(ViewConta.class)
 	public ResponseEntity<Monitoramento> atualizarMonitoramento(@PathVariable("id") Long id,
 			@RequestBody Monitoramento monitoramento) {
 		monitoramentoServiceImpl.salvarMonitoramento(id, monitoramento);

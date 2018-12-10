@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.bolsa.views.ContaView.Contato;
+import com.bolsa.views.ContaView.ViewConta;
 import com.bolsa.views.ContaView.MonitoramentoView;
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -26,7 +26,7 @@ public class Monitoramento {
 	@JoinColumn(nullable = false)
 	private Conta conta;
 
-	@JsonView({ Contato.class, MonitoramentoView.class })
+	@JsonView({ ViewConta.class, MonitoramentoView.class })
 	public Long getId() {
 		return id;
 	}
@@ -35,7 +35,7 @@ public class Monitoramento {
 		this.id = id;
 	}
 
-	@JsonView({ Contato.class, MonitoramentoView.class })
+	@JsonView({ ViewConta.class, MonitoramentoView.class })
 	public String getEmpresa() {
 		return empresa;
 	}
@@ -44,7 +44,7 @@ public class Monitoramento {
 		this.empresa = empresa;
 	}
 
-	@JsonView({ Contato.class, MonitoramentoView.class })
+	@JsonView({ ViewConta.class, MonitoramentoView.class })
 	public Double getPrecoCompra() {
 		return precoCompra;
 	}
@@ -53,7 +53,7 @@ public class Monitoramento {
 		this.precoCompra = precoCompra;
 	}
 
-	@JsonView({ Contato.class, MonitoramentoView.class })
+	@JsonView({ ViewConta.class, MonitoramentoView.class })
 	public Double getPrecoVenda() {
 		return precoVenda;
 	}

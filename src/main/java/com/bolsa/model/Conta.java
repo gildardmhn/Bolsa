@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.bolsa.views.ContaView.Contato;
+import com.bolsa.views.ContaView.ViewConta;
 import com.bolsa.views.ContaView.MonitoramentoView;
 import com.bolsa.views.ContaView.TodasAsContas;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -30,7 +30,7 @@ public class Conta {
 	@OneToMany(mappedBy = "conta")
 	private List<Negociacao> negociacoes;
 
-	@JsonView({ Contato.class, MonitoramentoView.class, TodasAsContas.class })
+	@JsonView({ ViewConta.class, MonitoramentoView.class, TodasAsContas.class })
 	public Long getId() {
 		return id;
 	}
@@ -39,7 +39,7 @@ public class Conta {
 		this.id = id;
 	}
 
-	@JsonView({ Contato.class, MonitoramentoView.class, TodasAsContas.class })
+	@JsonView({ ViewConta.class, MonitoramentoView.class, TodasAsContas.class })
 	public String getEmail() {
 		return email;
 	}
@@ -48,7 +48,7 @@ public class Conta {
 		this.email = email;
 	}
 
-	@JsonView({ Contato.class, MonitoramentoView.class, TodasAsContas.class })
+	@JsonView({ ViewConta.class, MonitoramentoView.class, TodasAsContas.class })
 	public float getSaldo() {
 		return saldo;
 	}
@@ -57,7 +57,7 @@ public class Conta {
 		this.saldo = saldo;
 	}
 
-	@JsonView({ Contato.class, MonitoramentoView.class, TodasAsContas.class })
+	@JsonView({ ViewConta.class, MonitoramentoView.class, TodasAsContas.class })
 	public float getNumeroAcoes() {
 		return numeroAcoes;
 	}
@@ -66,7 +66,7 @@ public class Conta {
 		this.numeroAcoes = numeroAcoes;
 	}
 
-	@JsonView(Contato.class)
+	@JsonView(ViewConta.class)
 	public List<Monitoramento> getMonitoramentos() {
 		return monitoramentos;
 	}
@@ -75,7 +75,7 @@ public class Conta {
 		this.monitoramentos = monitoramentos;
 	}
 
-	@JsonView(Contato.class)
+	@JsonView(ViewConta.class)
 	public List<Negociacao> getNegociacoes() {
 		return negociacoes;
 	}
