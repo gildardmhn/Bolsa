@@ -32,7 +32,7 @@ public class EmpresaController {
 	public ResponseEntity<Empresa> salvarEmpresa(@RequestBody Empresa empresa) {
 		Empresa empresaNew = empresaServiceImpl.salvarEmpresa(empresa);
 		if(empresaNew != null) {
-			return new ResponseEntity<Empresa>(empresa, HttpStatus.CREATED);
+			return new ResponseEntity<Empresa>(empresaNew, HttpStatus.CREATED);
 		}
 		return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
@@ -64,7 +64,7 @@ public class EmpresaController {
 			+ " serve para atualizar os dados de uma empresa informando o seu id")
 	@PutMapping("{id}")
 	public ResponseEntity<Empresa> atualizarEmpresa(@PathVariable("id") Long id, @RequestBody Empresa empresa) {
-		empresaServiceImpl.atualizarEmpresa(id, empresa);
-		return new ResponseEntity<>(empresa, HttpStatus.OK);
+		Empresa empresaUpdated = empresaServiceImpl.atualizarEmpresa(id, empresa);
+		return new ResponseEntity<>(empresaUpdated, HttpStatus.OK);
 	}
 }

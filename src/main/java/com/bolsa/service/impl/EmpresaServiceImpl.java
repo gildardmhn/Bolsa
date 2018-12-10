@@ -49,8 +49,14 @@ public class EmpresaServiceImpl implements EmpresaService {
 
 	@Override
 	public Empresa atualizarEmpresa(Long id, Empresa empresa) {
-		empresa.setId(id);
-		return empresaRepository.save(empresa);
+		Empresa empresaUpdated = buscaEmpresaPeloId(id);
+		if(empresa.getNome() != null) {
+			empresaUpdated.setNome(empresa.getNome());
+		}
+		if(empresa.getValorAcao() > 0) {
+			empresaUpdated.setValorAcao(empresa.getValorAcao());
+		}
+		return empresaRepository.save(empresaUpdated);
 	}
 
 	@Override
@@ -58,10 +64,6 @@ public class EmpresaServiceImpl implements EmpresaService {
 		return empresaRepository.findByNome(nome);
 	}
 	
-	@Override
-	public Empresa atualizarEmpresa(Long id) {
-		return null;
-	}
 	
 	public void SimuladorConexaoPreco() {
 		List<Empresa> empresas = listarEmpresas();

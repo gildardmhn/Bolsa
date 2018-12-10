@@ -15,4 +15,8 @@ public interface ContaService {
 	void deleteContaById(Long id);
 	
 	float saldoInicial(Long id);
+	
+	Conta atualizarConta(Long id, Conta conta);
+	
+	Conta depositar(Long id, Conta conta);
 }

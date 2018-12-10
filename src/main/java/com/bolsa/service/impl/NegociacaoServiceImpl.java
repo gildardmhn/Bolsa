@@ -130,4 +130,9 @@ public class NegociacaoServiceImpl implements NegociacaoService {
 		System.out.println("------------------------------------------------------------");
 	}
 
+	@Override
+	public void deletarNegociacao(Long id) {
+		negociacaoRepository.deleteById(id);
+	}
+
 }

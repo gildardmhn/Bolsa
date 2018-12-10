@@ -18,5 +18,7 @@ public interface NegociacaoService {
 	void compraVendaAcoes(Long id);
 	
 	void historicoNegociacoes(Long id);
+	
+	void deletarNegociacao(Long id);
 
 }
