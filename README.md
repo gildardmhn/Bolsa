@@ -85,7 +85,7 @@ Os enpoints da aplicação estão documentado nesse [link.](http://localhost:900
 ```
 
 **NB: Não pode se cadastrar mais um monitoramento referente a uma mesma empresa. 
-Pode se cadastrar o monitoramento de uam empresa somente se existe uma empresa com o mesmo nome cadastrada Foi implementado um controle.**
+Pode se cadastrar o monitoramento de uma empresa somente se existe uma empresa com o mesmo nome cadastrada. Foi implementado um controle.**
 
 * **INICAR A SIMULAÇÃO** : 
 Para iniciar a simulação basta mandar um requisição POST para **/app/bolsa/start/{id}**, onde **id** é o id referente ao cliente desejado.
