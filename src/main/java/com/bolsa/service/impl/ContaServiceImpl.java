@@ -58,7 +58,9 @@ public class ContaServiceImpl implements ContaService {
 	@Override
 	public Conta atualizarConta(Long id, Conta conta) {
 		Conta contaUpdated = listaContaPeloId(id);
-		contaUpdated.setEmail(conta.getEmail());
+		if(conta.getEmail() != null) {
+			contaUpdated.setEmail(conta.getEmail());
+		}
 		return contaRepository.save(contaUpdated);
 	}
 

@@ -30,15 +30,13 @@ public class NegociacaoServiceImpl implements NegociacaoService {
 
 	@Override
 	public Negociacao salvarNegociacao(Long id, Negociacao negociacao) {
-		Conta conta = contaServiceImpl.listaContaPeloId(id);
-		negociacao.setConta(conta);
+		negociacao.setConta(contaServiceImpl.listaContaPeloId(id));
 		return negociacaoRepository.save(negociacao);
 	}
 
 	@Override
 	public List<Negociacao> listaNegociacoes(Long id) {
-		Conta conta = contaServiceImpl.listaContaPeloId(id);
-		return negociacaoRepository.findByConta(conta);
+		return negociacaoRepository.findByConta(contaServiceImpl.listaContaPeloId(id));
 	}
 
 	@Override
